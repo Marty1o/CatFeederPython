@@ -1,16 +1,24 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from Email import *
+# from Motor import *
+import time
+import schedule
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def initialization():
+    print("Auto-Cat initializing")
+    email = Email(465, 'catfeederprojectpie@gmail.com', 'AutoCatProject')
+    # motor = Motor(21, 50, 5)
+    # schedule.every(1).minutes.do(email.sendEmail,'martin.c.842@gmail.com','This is a test')
+    email.sendEmail('martin.c.842@gmail.com', 'This is a test!!')
+    # schedule.every(1).minutes.do(motor.feed, 10, 5)
+    # Add any other initializing components here
+    print("Auto-Cat initializing complete")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+def main():
+    # Call initilization function
+    initialization()
+
+
+# Call main function
+main()
