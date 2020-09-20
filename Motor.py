@@ -1,33 +1,35 @@
 import RPi.GPIO as GPIO
 import time
-from Email import *
 import datetime
 
 
 class Motor:
-    # its just how it goes
-    def __init__(self, servoPin, htz, startAngle):
-        self.email = Email(465, 'Auto.Cat.Messaging@gmail.com', 'AutoCatProject')
-        self.htz = htz
-        self.servoPin = servoPin
+    @staticmethod
+    def runMotor():
+        servoPIN = 17
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(self.servoPin, GPIO.OUT)
-        self.p = GPIO.PWM(self.servoPin, self.htz)
-        self.startAngle = startAngle
-        self.p.ChangeDutyCycle(self.startAngle)
+        GPIO.setup(servoPIN, GPIO.OUT)
 
-    def feed(self, toAngle, timeToRun):
-        print("Feeding now")
-        self.p.ChangeDutyCycle(toAngle)
-        time.sleep(timeToRun)
-        self.p.ChangeDutyCycle(self.startAngle)
-        time.sleep(0.5)
-        feedingMessage = 'Feeding complete on: ' + str(datetime.datetime.now())
-        print(feedingMessage)
-        self.email.sendEmail('sergio.c.842@gmail.com', 'Feeding Complete!')
-        self.email.sendEmail('martin.c.842@gmail.com', 'Feeding Complete!')
-        print("Feeding Complete")
-
-    def end(self):
-        self.p.stop()
-        GPIO.cleanup()
+        p = GPIO.PWM(servoPIN, 50)  # GPIO 17 for PWM with 50Hz
+        p.start(2.5)  # Initialization
+        try:
+            while True:
+                p.ChangeDutyCycle(5)
+                time.sleep(0.5)
+                p.ChangeDutyCycle(7.5)
+                time.sleep(0.5)
+                p.ChangeDutyCycle(10)
+                time.sleep(0.5)
+                p.ChangeDutyCycle(12.5)
+                time.sleep(0.5)
+                p.ChangeDutyCycle(10)
+                time.sleep(0.5)
+                p.ChangeDutyCycle(7.5)
+                time.sleep(0.5)
+                p.ChangeDutyCycle(5)
+                time.sleep(0.5)
+                p.ChangeDutyCycle(2.5)
+                time.sleep(0.5)
+        except KeyboardInterrupt:
+            p.stop()
+            GPIO.cleanup()

@@ -1,18 +1,21 @@
-from Email import *
-# from Motor import *
+# from Email import *
+from Motor import *
 import time
 import schedule
 
 
 def initialization():
-    print("Auto-Cat initializing")
+    motor = Motor()
+    motor.runMotor()
+
+    '''print("Auto-Cat initializing")
     email = Email(465, 'catfeederprojectpie@gmail.com', 'AutoCatProject')
     # motor = Motor(21, 50, 5)
     # schedule.every(1).minutes.do(email.sendEmail,'martin.c.842@gmail.com','This is a test')
     email.sendEmail('martin.c.842@gmail.com', 'This is a test!!')
     # schedule.every(1).minutes.do(motor.feed, 10, 5)
     # Add any other initializing components here
-    print("Auto-Cat initializing complete")
+    print("Auto-Cat initializing complete")'''
 
 
 def main():
@@ -21,4 +24,5 @@ def main():
 
 
 # Call main function
-main()
+if __name__ == "__main__":
+    main()
