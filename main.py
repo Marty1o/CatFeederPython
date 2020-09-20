@@ -10,7 +10,7 @@ def initialization():
     schedule.every(1).minute.do(motor.runMotor())
 
     '''print("Auto-Cat initializing")
-    email = Email(465, 'catfeederprojectpie@gmail.com', 'AutoCatProject')
+    email = Email(465, 'catfeederprojectpie@gmail.com', 'none at the moment')
     # motor = Motor(21, 50, 5)
     # schedule.every(1).minutes.do(email.sendEmail,'martin.c.842@gmail.com','This is a test')
     email.sendEmail('martin.c.842@gmail.com', 'This is a test!!')
