@@ -7,7 +7,7 @@ import time
 def initialization():
     motor = Motor()
 
-    schedule.every(1).minute.do(motor.runMotor())
+    schedule.every(1).minute.do(Motor.runMotor)
 
     '''print("Auto-Cat initializing")
     email = Email(465, 'catfeederprojectpie@gmail.com', 'none at the moment')
@@ -18,6 +18,8 @@ def initialization():
     # Add any other initializing components here
     print("Auto-Cat initializing complete")'''
 
+def helloWorld():
+    print("hi hi hi")
 
 def main():
     # Call initilization function
@@ -25,9 +27,11 @@ def main():
 
     # will loop forever and check if there are any pending tasks.
     while True:
+        print('System is running')
         schedule.run_pending()
         time.sleep(1)
 
 
 # Call main function
-main()
+if __name__ == "__main__":
+    main()
