@@ -23,7 +23,11 @@ def main():
     # Call initilization function
     initialization()
 
+    # will loop forever and check if there are any pending tasks.
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+
 
 # Call main function
-if __name__ == "__main__":
-    main()
+main()
