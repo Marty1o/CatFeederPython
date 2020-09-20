@@ -1,12 +1,13 @@
 # from Email import *
 from Motor import *
-import time
 import schedule
+import time
 
 
 def initialization():
     motor = Motor()
-    motor.runMotor()
+
+    schedule.every(1).minute.do(motor.runMotor())
 
     '''print("Auto-Cat initializing")
     email = Email(465, 'catfeederprojectpie@gmail.com', 'AutoCatProject')
